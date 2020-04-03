@@ -131,6 +131,9 @@ const defaultBoards = [
     }
 ];
 
+//var conn = new WebSocket('ws://127.0.0.1:5000/');
+//conn.onmessage = function(e){ console.log(e.data); };
+//conn.onopen = () => conn.send('testだよ');
 
 //jKanbanのインスタンス作成
 const kanban = new jKanban({
@@ -226,20 +229,19 @@ const kanban = new jKanban({
             console.log(array4)
             //alert(elmNode.innerHTML);
         }
-        alert(array4);
+        //alert(array4);
 
         total_array[0]['item'] = array1;
         total_array[1]['item'] = array2;
         total_array[2]['item'] = array3;
         total_array[3]['item'] = array4;
-        alert(total_array[0]['class']);
+        //alert(total_array[0]['class']);
         
-        const fileName = "mochi.json";
+        //const fileName = "mochi.json";
         const data = JSON.stringify(total_array);
-        const link = document.createElement("a");
-        link.href = "data:text/plain," + encodeURIComponent(data);
-        a.download = fileName;
-        a.click();
+        var conn = new WebSocket('ws://127.0.0.1:5000/');
+        conn.onmessage = function(e){ console.log(e.data); };
+        conn.onopen = () => conn.send(data);
         
         /*
         var fsExtra = require('fs-extra');

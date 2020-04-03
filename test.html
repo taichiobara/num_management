@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <script>
+        /*
+            var socket = new WebSocket("ws://127.0.0.1:5000/");
+            //socket.send('サンプルデータ');
+
+            function websocketSend(data) {
+            //Send data
+            socket.send(data);
+}
+websocketSend("テスト");
+*/
+var conn = new WebSocket('ws://127.0.0.1:5000/');
+conn.onmessage = function(e){ console.log(e.data); };
+conn.onopen = () => conn.send('testだよ');
+
+
+            //Websocket
+
+            var uri = 'ws://127.0.0.1:5000/';
+
+            window.onload = function () {
+                const connection = new WebSocket(uri);
+                connection.onopen = onOpen;
+                connection.onmessage = onMessage;
+                
+            }
+
+            function onOpen(event) {
+                console.log("Connect successful!");
+                connection.send("サンプル");
+            }
+
+            function onMessage(event) {
+                //Incoming data
+                console.log(event.data);
+            }
+
+            function websocketSend(data) {
+                //Send data
+                //connection.send(data);
+            }
+            //websocketSend("テスト");
+            /*
+            socket.onopen = function(e) {
+                console.log("onopen");
+            }
+ 
+            socket.onmessage = function(e) {
+                console.log(e.data)
+            }
+            */
+
+        </script>
+    </head>
+    <body>
+    </body>
+</html>
